@@ -8,11 +8,29 @@ const useFetch = (url) => {
     useEffect(() => {
        const fetchData = async () => {
         setLoading(true);
-        try {
-            
+        try {            
             const res = await fetch(url);
             const json = await res.json();
-            setData(json)
+            console.log(json)
+            
+            const geoJson = {
+                type: "FeatureCollection",
+                features: json.map((country = {}) => {
+                    const { countryInfo = {}} = country;
+                    const { lat, long: lng} = countryInfo;
+                    return {
+                        type: "Feature",
+                        properties: {
+                            ...country,
+                        },
+                        geometry: {
+                            type: "Point",
+                            coordinates: [lng, lat]
+                        }
+                    }
+                })
+            }
+            setData(geoJson)
             setLoading(false)
         } catch (error) {
             setError(error)

@@ -20,13 +20,15 @@ const Map = () => {
 
     const url = 'https://corona.lmao.ninja/v2/countries'
     const { data, loading, error } = useFetch(url)
-    console.log(data)
+    console.log(data)    
+
+  
   
     return (
 
       <React.Fragment>
       { loading && <p>{loading}</p>}
-            
+     
       { error && <p>{error}</p>}
       
 
