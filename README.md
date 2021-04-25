@@ -4,7 +4,8 @@ You can read my notes on my blog:
 
 | No | Link | Date |
 | --- | --- | --- |
-| 1 | [Covid map React project day 1](http://makneta.herokuapp.com/post/covid-map-react-project-day-1/) | April 25, 2021 |
+| 1 | [Covid map React project day 1](http://makneta.herokuapp.com/post/covid-map-react-project-day-1/) | April 24, 2021 |
+| 2 | [Covid map React project day 2](http://makneta.herokuapp.com/post/covid-map-react-project-day-2/) | April 25, 2021 |
 
 
 ---
