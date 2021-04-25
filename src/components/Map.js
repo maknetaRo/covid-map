@@ -15,8 +15,8 @@ const redIcon = new L.Icon({
 });
 
 const Map = () => {
-    const center_position = [0, 0]
-    const zoom = 1.5
+    const center_position = [31.262218, 34.801472]
+    const zoom = 1.65
 
     const url = 'https://disease.sh/v3/covid-19/countries'
     const { data, loading, error } = useFetch(url)
@@ -40,9 +40,9 @@ const Map = () => {
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      {data && data.features.map(country => {
+      {data ? data.features.map(country => {
         return (
-        <Marker icon={redIcon} position={country.geometry.coordinates}>
+        <Marker icon={redIcon} position={country.geometry.coordinates} key={country.properties.country}>
         <Popup>
           <h2>{country.properties.country}</h2>
           <p>Cases: {country.properties.cases}</p>
@@ -55,8 +55,8 @@ const Map = () => {
         </Popup>
         </Marker>
         )
-      })}
-    
+      })
+    : null}
    
      
      </MapContainer>
