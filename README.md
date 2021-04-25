@@ -1,4 +1,14 @@
-# Getting Started with Create React App
+# Covid Map
+This is my project to learn React. I'm creating the project and writing notes in public.
+You can read my notes on my blog:
+
+| No | Link | Date |
+| --- | --- | --- |
+| 1 | [Covid map React project day 1](http://makneta.herokuapp.com/post/covid-map-react-project-day-1/) | April 25, 2021 |
+
+
+--
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
