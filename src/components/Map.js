@@ -15,42 +15,52 @@ const redIcon = new L.Icon({
 });
 
 const Map = () => {
-    const position = [51.9194, 19.1451]
+    const center_position = [0, 0]
     const zoom = 1.5
 
-    const url = 'https://corona.lmao.ninja/v2/countries'
+    const url = 'https://disease.sh/v3/covid-19/countries'
     const { data, loading, error } = useFetch(url)
-    console.log(data)    
-
+    console.log(data)
+    
+   
+         
+    if (error) return <p>Error!</p>;
+    if (loading) return <p>Loading...</p>;
   
-  
-    return (
-
-      <React.Fragment>
-      { loading && <p>{loading}</p>}
+    return (  
      
-      { error && <p>{error}</p>}
+    
       
 
       <MapContainer className="map" 
-      center={position} zoom={zoom} scrollWheelZoom={false}
+      center={center_position} zoom={zoom} scrollWheelZoom={false}
       
       >
       <TileLayer
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <Marker icon={redIcon} position={position}>
+      {data && data.features.map(country => {
+        return (
+        <Marker icon={redIcon} position={country.geometry.coordinates}>
         <Popup>
-          Somewhere in the middle of <br /> Poland.
+          <h2>{country.properties.country}</h2>
+          <p>Cases: {country.properties.cases}</p>
+          <p>Deaths: {country.properties.deaths}</p>
+          <p>Recovered: {country.properties.recovered}</p>
+          <hr />
+          <p>Cases Today: {country.properties.todayCases}</p>
+          <p>Death Today: {country.properties.todayDeaths}</p>
+          <p>Recovered Today: {country.properties.todayRecovered}</p>
         </Popup>
-      </Marker>
-    </MapContainer>
-      
-      </React.Fragment>
-        
-       
-            
+        </Marker>
+        )
+      })}
+    
+   
+     
+     </MapContainer>
+     
         
     )
 }

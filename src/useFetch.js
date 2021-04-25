@@ -11,8 +11,7 @@ const useFetch = (url) => {
         try {            
             const res = await fetch(url);
             const json = await res.json();
-            console.log(json)
-            
+                       
             const geoJson = {
                 type: "FeatureCollection",
                 features: json.map((country = {}) => {
@@ -25,7 +24,7 @@ const useFetch = (url) => {
                         },
                         geometry: {
                             type: "Point",
-                            coordinates: [lng, lat]
+                            coordinates: [lat, lng]
                         }
                     }
                 })
@@ -33,6 +32,7 @@ const useFetch = (url) => {
             setData(geoJson)
             setLoading(false)
         } catch (error) {
+            console.log(`Failed to fetch countries: ${error.message}`, error)
             setError(error)
         }
        };
