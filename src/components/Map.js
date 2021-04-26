@@ -20,45 +20,39 @@ const Map = () => {
 
     const url = 'https://disease.sh/v3/covid-19/countries'
     const { data, loading, error } = useFetch(url)
-    console.log(data)
-    
-   
+    console.log(data)     
          
     if (error) return <p>Error!</p>;
     if (loading) return <p>Loading...</p>;
   
-    return (  
-     
-    
-      
-
+    return (     
       <MapContainer className="map" 
-      center={center_position} zoom={zoom} scrollWheelZoom={false}
-      
+      center={center_position} zoom={zoom} scrollWheelZoom={false}      
       >
       <TileLayer
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      {data ? data.features.map(country => {
+      {data ? data.features.map(place => {
+        const { coordinates } = place.geometry        
+        const { country, cases, deaths, recovered, todayCases, todayDeaths, todayRecovered, updated } = place.properties;
+
+        let date = new Date(updated)
+
         return (
-        <Marker icon={redIcon} position={country.geometry.coordinates} key={country.properties.country}>
-        <Popup>
-          <h2>{country.properties.country}</h2>
-          <p>Cases: {country.properties.cases}</p>
-          <p>Deaths: {country.properties.deaths}</p>
-          <p>Recovered: {country.properties.recovered}</p>
-          <hr />
-          <p>Cases Today: {country.properties.todayCases}</p>
-          <p>Death Today: {country.properties.todayDeaths}</p>
-          <p>Recovered Today: {country.properties.todayRecovered}</p>
+        <Marker icon={redIcon} position={coordinates} key={place.properties.country}>
+        <Popup  >
+          <h2>{country}</h2>
+          <p><strong>Cases:</strong> {cases} | <strong>Cases Today:</strong> {todayCases}</p> 
+          <p><strong>Deaths:</strong> {deaths} | <strong>Death Today:</strong> {todayDeaths}</p>
+          <p><strong>Recovered:</strong> {recovered} | <strong>Recovered Today:</strong> {todayRecovered}</p>
+          <p><strong>Last Update:</strong> {date.toLocaleDateString()}</p>
         </Popup>
         </Marker>
         )
       })
     : null}
-   
-     
+       
      </MapContainer>
      
         
