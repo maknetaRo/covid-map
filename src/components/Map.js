@@ -18,7 +18,14 @@ const Map = () => {
     const center_position = [31.262218, 34.801472]
     const zoom = 1.65
 
-    const url = 'https://disease.sh/v3/covid-19/countries'
+    const urls = [
+        'https://disease.sh/v3/covid-19/countries',
+        'https://disease.sh/v3/covid-19/all',
+        'https://disease.sh/v3/covid-19/historical?lastdays=30',
+        'https://disease.sh/v3/covid-19/vaccine/coverage/countries?lastdays=30'
+      ]
+
+    const url = 'https://disease.sh/v3/covid-19/countries',
     const { data, loading, error } = useFetch(url)
     console.log(data)     
          
