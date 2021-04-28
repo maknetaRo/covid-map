@@ -1,7 +1,8 @@
 .App {
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
+ margin: 0 auto;
+ 
 }
 
 .leaflet-container {
@@ -22,4 +23,34 @@
 
 .leaflet-popup-tip-container {
   display: none;
+}
+
+.country-list {
+  border-top: 1px solid black;
+  overflow-x: auto;
+  overflow-y: auto;
+  max-height: 20vh;
+  border-bottom: none; 
+  padding-inline-start: 0;
+}
+.list-elem {
+  list-style: none;
+  line-height: 2;
+  font-size: 0.9rem;
+  border-bottom: 1px solid black;
+  padding-left: 1rem;
+}
+
+@media (min-width: 650px) {
+  .App{
+    flex-direction: row;
+  }
+  .country-list {
+    max-height: 90vh;
+    min-width: 250px;
+  }
+  .list-elem {
+    padding-right: 1rem;
+  }
+  
 }
