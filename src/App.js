@@ -17,7 +17,7 @@ function App() {
  
   return (
     <div className="App">
-    Hellow World
+
     
       <CountryList />
       <div className="main">
