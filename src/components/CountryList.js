@@ -19,13 +19,11 @@ const CountryList = () => {
       
       return countries.features.map(place => {
         const { coordinates } = place.geometry        
-        const { country, cases, deaths, recovered, todayCases, todayDeaths, todayRecovered, updated } = place.properties;
+        const { country, cases, deaths } = place.properties;
         console.log(country)
 
-        let date = new Date(updated)
-
         return (
-            <li key={country}>{country}</li>
+            <li className="list-elem" key={country}>{country} / {cases} / {deaths} </li>
         )
       })
     }
@@ -34,7 +32,7 @@ const CountryList = () => {
         <div>
         <h3 style={{paddingLeft: "1rem"}}>Country / Cases / Deaths</h3>
         <ul className="country-list">
-           {renderData()}
+         {renderData()}
         </ul>
             
         </div>
