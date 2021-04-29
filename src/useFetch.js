@@ -67,7 +67,7 @@ const useFetch = (url) => {
         return function cleanup() {
             cancelRequest = true
         }
-    }, [])
+    }, [url])
 
     
     return state

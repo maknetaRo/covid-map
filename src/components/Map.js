@@ -23,8 +23,9 @@ const Map = (props) => {
 
     
     return (     
+      <section className="map">
       <MapContainer className="map" 
-      center={center_position} zoom={zoom} scrollWheelZoom={false}      
+      center={center_position} zoom={zoom} scrollWheelZoom={true}      
       >
       <TileLayer
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -51,6 +52,7 @@ const Map = (props) => {
     } */}
        
      </MapContainer>
+     </section>
      
         
     )

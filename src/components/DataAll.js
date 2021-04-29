@@ -1,4 +1,5 @@
 import React from 'react'
+import {StyledGridElem, StyledGridSection} from '../components/modules/GlobalSectionUI'
 
 const DataAll = () => {
     // console.log("Props: ", props)
@@ -14,16 +15,22 @@ const DataAll = () => {
     const todayDeaths = 6355
     const todayRecovered = 352617
     const date = new Date(1619628585976)
-  
 
     return (
-        <article>
-              <p>Cases: {cases.toLocaleString().replace(/,/gi, " ")}</p>
-              <p>Critical: {critical.toLocaleString().replace(/,/gi, " ")}</p>
-              <p>Deaths: {deaths.toLocaleString().replace(/,/gi, " ")}</p>
+        <StyledGridSection>
+        
+        
+        <StyledGridElem>
+        <p>Cases: {cases.toLocaleString().replace(/,/gi, " ")}</p>
+   
+       
+        </StyledGridElem>
+        <p>Critical: {critical.toLocaleString().replace(/,/gi, " ")}</p>
+        <p>Deaths: {deaths.toLocaleString().replace(/,/gi, " ")}</p>
+             
               <p>Recoverd: {recovered.toLocaleString().replace(/,/gi, " ")}</p>
-              <p>{date.toLocaleDateString()}</p>
-        </article>
+        <p>{date.toLocaleString()}</p> 
+        </StyledGridSection>
     )
 }
 
