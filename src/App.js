@@ -20,14 +20,15 @@ const { countries, global, dataHistorical, dataVaccine, loading, error } = useFe
 
      
 if (error) return <p>Error!</p>;
-if (loading) return <p>Loading...</p>;
 
   return (
     <div className="App">
     <Header />
-    <Map countries={countries} /> 
-    <DataAll  />  
-    <CountryList countries={countries} />
+    {loading ? <p>Loading ...</p> :  <Map countries={countries} /> }
+   
+    {/*{loading ? <p>Loading ...</p> : <DataAll global={global} /> }*/} 
+    {loading ? null : <CountryList countries={countries} /> }
+   
     </div>
   );
 }
