@@ -3,6 +3,7 @@ import Map from './components/Map'
 import DataAll from './components/DataAll'
 import Header from './components/Header'
 import CountryList from './components/CountryList'
+import ListTable from './components/ListTable'
 
 import useFetch from './useFetch'
 
@@ -17,6 +18,7 @@ function App() {
   ]
 
 const { countries, global, dataHistorical, dataVaccine, loading, error } = useFetch(urls)
+console.log(countries)
 
      
 if (error) return <p>Error!</p>;
@@ -27,7 +29,8 @@ if (error) return <p>Error!</p>;
     {loading ? <p>Loading ...</p> :  <Map countries={countries} /> }
    
     {/*{loading ? <p>Loading ...</p> : <DataAll global={global} /> }*/} 
-    {loading ? null : <CountryList countries={countries} /> }
+    {loading ? "" : <ListTable countries={countries} /> }
+    {/*{loading ? null : <CountryList countries={countries} /> } */}
    
     </div>
   );
