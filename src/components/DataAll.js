@@ -1,9 +1,10 @@
 import React from 'react'
 
-const DataAll = (props) => {
-    console.log("Pros: ", props.global)
+const DataAll = () => {
+    // console.log("Props: ", props)
     // const {cases, deaths, critical, recovered, tests, todayCases, todayDeaths, todayRecovered, updated } = props.global
     // const date = new Date(updated)
+    // console.log(cases)
     const cases = 149754711
     const deaths = 3154570
     const critical = 110929 
@@ -13,7 +14,6 @@ const DataAll = (props) => {
     const todayDeaths = 6355
     const todayRecovered = 352617
     const date = new Date(1619628585976)
-
   
 
     return (

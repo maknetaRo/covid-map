@@ -1,91 +1,76 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useRef, useReducer } from 'react';
 
-const useFetch = (urls) => {
-    const [countries, setCountries] = useState(null);
-    const [global, setGlobal] = useState(null);
-    const [dataHistorical, setDataHistorical] = useState(null)
-    const [dataVaccine, setDataVaccine] = useState(null)
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
-    
+const useFetch = (url) => {
+    const cache = useRef({})
+
+    const initialState = {
+        status: "idle",
+        error: null,
+        countries: null,
+    };
+
+    const [state, dispatch] = useReducer((state, action) => {
+        switch (action.type) {
+            case 'FETCHING': 
+                return {...initialState, status: 'fetching'};
+            case 'FETCHED': 
+                return { ...initialState, status: 'fetched', countries: action.payload};
+            case 'FETCH_ERROR':
+                return { ...initialState, status: 'error', error: action.payload};
+            default:
+                return state;
+        }
+    }, initialState);
+  
 
     useEffect(() => {
-        const fetchData = async () => {
-            const links = urls
-            console.log(links)
-            setLoading(true);
-            try {
-                const res = await Promise.all(links.map((url) => fetch(url)))
-                const data = await Promise.all(res.map((r) => r.json()))
+        let cancelRequest = false;
+        if (!url) return;
 
-                const geoJson = {
-                    type: "FeatureCollection",
-                    features: data[0].map((country = {}) => {
-                        const { countryInfo = {}} = country;
-                        const { lat, long: lng} = countryInfo;
-                        return {
-                            type: "Feature",
-                            properties: {
-                                ...country,
-                            },
-                            geometry: {
-                                type: "Point",
-                                coordinates: [lat, lng]
+        const fetchData = async () => {
+            dispatch({ type: 'FETCHING' });
+            if (cache.current[url]) {
+                const countries = cache.current[url];
+                dispatch({ type: 'FETCHED', payload: countries });
+            } else {
+                try {
+                    const response = await fetch(url);
+                    const countries = await response.json()
+                    cache.current[url] = countries;
+                    const geoJson = {
+                        type: "FeatureCollection",
+                        features: countries.map((country = {}) => {
+                            const { countryInfo = {}} = country;
+                            const { lat, long: lng} = countryInfo;
+                            return {
+                                type: "Feature",
+                                properties: {
+                                    ...country,
+                                },
+                                geometry: {
+                                    type: "Point",
+                                    coordinates: [lat, lng]
+                                }
                             }
-                        }
-                    })
+                        })
+                    }
+    
+                    if (cancelRequest) return;
+                    dispatch({ type: 'FETCHED', payload: geoJson });    
+                } catch (error) {
+                    if (cancelRequest) return;
+                    dispatch({ type: 'FETCH_ERROR', payload: error.message})
                 }
-                setCountries(geoJson)
-                setGlobal(data[1])
-                // setDataHistorical(data[2])
-                // setDataVaccine(data[3])
-                setLoading(false)
-            } catch (error) {
-                console.log(`Failed to fetch data: ${error.message}`, error)
-                setError(error)
             }
-       
-      
+        };
+        fetchData();
+        return function cleanup() {
+            cancelRequest = true
         }
-        fetchData()
     }, [])
 
-    // useEffect(() => {
-    //    const fetchData = async () => {
-    //     setLoading(true);
-    //     try {            
-    //         const res = await fetch(url);
-    //         const json = await res.json();
-                       
-    //         const geoJson = {
-    //             type: "FeatureCollection",
-    //             features: json.map((country = {}) => {
-    //                 const { countryInfo = {}} = country;
-    //                 const { lat, long: lng} = countryInfo;
-    //                 return {
-    //                     type: "Feature",
-    //                     properties: {
-    //                         ...country,
-    //                     },
-    //                     geometry: {
-    //                         type: "Point",
-    //                         coordinates: [lat, lng]
-    //                     }
-    //                 }
-    //             })
-    //         }
-    //         console.log("GeoJson: ", geoJson)
-    //         setCountries(geoJson)
-    //         setLoading(false)
-    //     } catch (error) {
-    //         console.log(`Failed to fetch countries: ${error.message}`, error)
-    //         setError(error)
-    //     }
-    //    };
-    //    fetchData()
-    // }, [url])
     
-    return { countries, global, dataHistorical, dataVaccine, loading, error}
-}
+    return state
+};
 
 export default useFetch
