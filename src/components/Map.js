@@ -29,7 +29,7 @@ const Map = (props) => {
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-   {/*  {props.countries.features.map(place => {
+  {props.countries.features.map(place => {
         const { coordinates } = place.geometry        
         const { country, cases, deaths, recovered, todayCases, todayDeaths, todayRecovered, updated } = place.properties;
 
@@ -47,7 +47,7 @@ const Map = (props) => {
         </Marker>
         )
       })
-    } */}
+    } 
        
      </MapContainer>
      </section>

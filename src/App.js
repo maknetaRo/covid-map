@@ -1,9 +1,9 @@
+import { useState, useEffect } from 'react';
 import './App.css';
 import Map from './components/Map'
 import DataAll from './components/DataAll'
 import Header from './components/Header'
 
-// import useFetch from './useFetch';
 
 function App() {
 
@@ -17,16 +17,14 @@ function App() {
 // const { countries, global, dataHistorical, dataVaccine, loading, error } = useFetch(urls)
 
      
-// if (error) return <p>Error!</p>;
-// if (loading) return <p>Loading...</p>;
+if (error) return <p>Error!</p>;
+if (loading) return <p>Loading...</p>;
 
   return (
     <div className="App">
     <Header />
-    <Map />
-    <DataAll  />
-    {/*<Map countries={countries} /> 
-  <DataAll global={global} />*/}
+    <Map countries={countries} /> 
+    <DataAll  />  
     </div>
   );
 }
