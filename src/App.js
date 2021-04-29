@@ -26,6 +26,7 @@ const { countries } = useFetch(url)
 console.log(countries)
   return (
     <div className="App">
+    <Header />
    
    
     <Map countries={countries} /> 
