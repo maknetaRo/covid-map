@@ -30,7 +30,8 @@ const Map = (props) => {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
  {props.countries ? props.countries.features.map(place => {
-        const { coordinates } = place.geometry        
+        const { coordinates } = place.geometry    
+        const { flag, _id }     = place.properties.countryInfo    
         const { country, cases, deaths, recovered, todayCases, todayDeaths, todayRecovered, updated } = place.properties;
 
         let date = new Date(updated)
@@ -38,6 +39,7 @@ const Map = (props) => {
         return (
         <Marker icon={redIcon} position={coordinates} key={place.properties.country}>
         <Popup  >
+          <img src={flag} style={{width: "30px", height:"auto"}} />
           <h2>{country}</h2>
           <p><strong>Cases:</strong> {cases} | <strong>Cases Today:</strong> {todayCases}</p> 
           <p><strong>Deaths:</strong> {deaths} | <strong>Death Today:</strong> {todayDeaths}</p>

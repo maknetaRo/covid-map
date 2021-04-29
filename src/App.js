@@ -2,7 +2,6 @@ import './App.css';
 import Map from './components/Map'
 import DataAll from './components/DataAll'
 import Header from './components/Header'
-import CountryList from './components/CountryList'
 import ListTable from './components/ListTable'
 
 import useFetch from './useFetch'
