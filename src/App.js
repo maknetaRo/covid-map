@@ -1,8 +1,10 @@
-import { useState, useEffect } from 'react';
 import './App.css';
 import Map from './components/Map'
 import DataAll from './components/DataAll'
 import Header from './components/Header'
+import CountryList from './components/CountryList'
+
+import useFetch from './useFetch'
 
 
 function App() {
@@ -14,7 +16,7 @@ function App() {
     'https://disease.sh/v3/covid-19/vaccine/coverage/countries?lastdays=30'
   ]
 
-// const { countries, global, dataHistorical, dataVaccine, loading, error } = useFetch(urls)
+const { countries, global, dataHistorical, dataVaccine, loading, error } = useFetch(urls)
 
      
 if (error) return <p>Error!</p>;
@@ -25,6 +27,7 @@ if (loading) return <p>Loading...</p>;
     <Header />
     <Map countries={countries} /> 
     <DataAll  />  
+    <CountryList countries={countries} />
     </div>
   );
 }

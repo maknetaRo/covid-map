@@ -1,32 +1,8 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import {StyledGridElem, StyledGridSection} from '../components/modules/GlobalSectionUI'
 
 const DataAll = () => {
-    const url = 'https://disease.sh/v3/covid-19/all'
-    const [global, setGlobal] = useState([])
-    const [loading, setLoading] = useState(false)
-    const [error, setError] = useState(null);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            setLoading(true);
-            try {
-                const res = await fetch(url);
-                const json = await res.json();
-               
-                setGlobal(json)
-                console.log(json)
-                setLoading(false)
-            } catch(error) {
-                console.log(`Failed to fetch global data: ${error.message}`, error)
-                setError(error)
-            }
-        };
-        fetchData()
-    }, [url])
-    console.log(global)
-    if (error) return <p>Error!</p>;
-    if (loading) return <p>Loading...</p>;
     // const [cases, deaths, critical, recovered, tests, todayCases, todayDeaths, todayRecovered, updated ] = global
     // const date = new Date(updated)
     const cases = 149754711
@@ -42,7 +18,7 @@ const DataAll = () => {
 
     return (
         <StyledGridSection>
-        {global}
+        
         
         <StyledGridElem>
         <p>Cases: {cases.toLocaleString().replace(/,/gi, " ")}</p>
