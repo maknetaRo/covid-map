@@ -50,40 +50,7 @@ const useFetch = (urls) => {
         fetchData()
     }, [])
 
-    // useEffect(() => {
-    //    const fetchData = async () => {
-    //     setLoading(true);
-    //     try {            
-    //         const res = await fetch(url);
-    //         const json = await res.json();
-                       
-    //         const geoJson = {
-    //             type: "FeatureCollection",
-    //             features: json.map((country = {}) => {
-    //                 const { countryInfo = {}} = country;
-    //                 const { lat, long: lng} = countryInfo;
-    //                 return {
-    //                     type: "Feature",
-    //                     properties: {
-    //                         ...country,
-    //                     },
-    //                     geometry: {
-    //                         type: "Point",
-    //                         coordinates: [lat, lng]
-    //                     }
-    //                 }
-    //             })
-    //         }
-    //         console.log("GeoJson: ", geoJson)
-    //         setCountries(geoJson)
-    //         setLoading(false)
-    //     } catch (error) {
-    //         console.log(`Failed to fetch countries: ${error.message}`, error)
-    //         setError(error)
-    //     }
-    //    };
-    //    fetchData()
-    // }, [url])
+
     
     return { countries, global, dataHistorical, dataVaccine, loading, error}
 }

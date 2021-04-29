@@ -14,21 +14,22 @@ const redIcon = new L.Icon({
   shadowSize: [41, 41]
 });
 
-const Map = () => {
+const Map = (props) => {
     const center_position = [31.262218, 34.801472]
-    const zoom = 1.65
+    const zoom = 1.5
    
 
     
     return (     
+      <section className="map">
       <MapContainer className="map" 
-      center={center_position} zoom={zoom} scrollWheelZoom={false}      
+      center={center_position} zoom={zoom} scrollWheelZoom={true}      
       >
       <TileLayer
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      {/*{props.countries.features.map(place => {
+   {/*  {props.countries.features.map(place => {
         const { coordinates } = place.geometry        
         const { country, cases, deaths, recovered, todayCases, todayDeaths, todayRecovered, updated } = place.properties;
 
@@ -49,6 +50,7 @@ const Map = () => {
     } */}
        
      </MapContainer>
+     </section>
      
         
     )
