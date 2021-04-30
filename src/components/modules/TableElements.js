@@ -1,28 +1,42 @@
 import styled from 'styled-components'
 
-export const StyledTable = styled.table`
-    display: table;
-    position: absolute;
-    /* border-collapse: collapse; */
-    margin: 1.5rem;
-    font-size: 0.9rem;
-    font-family: sans-serif;
-    /* table-layout: fixed; */
+export const Styles = styled.div`
+    table {
     width: 100%;
-    white-space: nowrap;
-    padding: 1rem;
-    height: 480px;
-    overflow:scroll;
+    border-spacing: 0;
+    border: 1px solid #e8eaed;
+    overflow: auto;
+    font-size: 0.9rem;
+    thead{
+        
+    }
+    tr {
+        :first-child {
+            display: none;
+        }
+      :last-child {
+        td {
+          border-bottom: 0;
+        }
+      }
+    }
+    th {
+        position: sticky;
+        :nth-child(2) {
+            text-align: left;
+            padding-left: 0;
+        }
+    }
+    th,
+    td {
+      margin: 0;
+      padding: 1rem;
+      border-bottom: 1px solid #e8eaed;
+      border-right: 0;
+      :last-child {
+        border-right: 0;
+      }
+    }
+  }
 `;
 
-export const StyledThead = styled.thead`
-    background-color: blueviolet;
-    
-    text-align: left;
-
-    
-`;
-
-export const StyledTrow = styled.tr`
-    padding: 0.75rem;
-`;

@@ -4,17 +4,22 @@ import CountryList from './CountryList'
 
 const ListTable = (props) => {
     return (
-        <section 
-        style={{width: "800px",
-         padding: "2rem", 
-         border: "1px solid black", 
-         margin: "2rem auto"}}>
+        <section>
             <h2>Statistics</h2>
             <div>
             <button>Cases</button>
             <button>Vaccines</button>
             </div>
+            <section 
+            style={{maxWidth: "670px",
+             padding: "2rem 1rem", 
+             
+             margin: "2rem 2rem",
+             overflow: "scroll",
+             height: "480px"
+            }}>
             <CountryList  countries={props.countries} />
+            </section>
 
             
         </section>

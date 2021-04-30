@@ -16,9 +16,7 @@ function App() {
     'https://disease.sh/v3/covid-19/vaccine/coverage/countries?lastdays=30'
   ]
 
-const { countries, global, dataHistorical, dataVaccine, loading, error } = useFetch(urls)
-console.log(countries)
-
+const { countries, countrJson, global, dataHistorical, dataVaccine, loading, error } = useFetch(urls)
      
 if (error) return <p>Error!</p>;
 
@@ -27,8 +25,8 @@ if (error) return <p>Error!</p>;
     <Header />
     {loading ? <p>Loading ...</p> :  <Map countries={countries} /> }
     <section style={{maxWidth: "1140px"}}>
-      {/*{loading ? <p>Loading ...</p> : <DataAll global={global} /> }*/} 
-      {loading ? "" : <ListTable countries={countries} /> }
+     {/* {loading ? "" : <DataAll global={global} /> } */}
+      {loading ? "" : <ListTable countries={countrJson} /> }
       {/*{loading ? null : <CountryList countries={countries} /> } */}
     </section>
   
