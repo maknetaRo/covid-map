@@ -26,10 +26,13 @@ if (error) return <p>Error!</p>;
     <div className="App">
     <Header />
     {loading ? <p>Loading ...</p> :  <Map countries={countries} /> }
-   
-    {/*{loading ? <p>Loading ...</p> : <DataAll global={global} /> }*/} 
-    {loading ? "" : <ListTable countries={countries} /> }
-    {/*{loading ? null : <CountryList countries={countries} /> } */}
+    <section style={{maxWidth: "1140px"}}>
+      {/*{loading ? <p>Loading ...</p> : <DataAll global={global} /> }*/} 
+      {loading ? "" : <ListTable countries={countries} /> }
+      {/*{loading ? null : <CountryList countries={countries} /> } */}
+    </section>
+  
+
    
     </div>
   );

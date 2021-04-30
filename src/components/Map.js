@@ -21,7 +21,7 @@ const Map = (props) => {
 
     
     return (     
-      <section className="map">
+      <section className="map" style={{width: "100%"}}>
       <MapContainer className="map" 
       center={center_position} zoom={zoom} scrollWheelZoom={true}      
       >
