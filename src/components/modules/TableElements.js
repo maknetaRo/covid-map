@@ -20,22 +20,37 @@ export const Styles = styled.div`
         }
       }
     }
-    th {
-        position: sticky;
-        :nth-child(2) {
-            text-align: left;
-            padding-left: 0;
-        }
-    }
+
     th,
     td {
       margin: 0;
       padding: 1rem;
       border-bottom: 1px solid #e8eaed;
       border-right: 0;
+      white-space: nowrap;
       :last-child {
         border-right: 0;
       }
+      /* :nth-child(3),
+      :nth-child(5) {
+        font-style: italic;
+      } */
+     
+    }
+  
+    td {
+      :nth-child(2) {
+        white-space: normal;
+      }
+     
+    }
+    th {
+        position: sticky;
+        white-space: normal;
+        :nth-child(2) {
+            text-align: left;
+            padding-left: 0;
+        }
     }
   }
 `;

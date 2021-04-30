@@ -4,11 +4,11 @@ import Table from './modules/Table'
 
 
 
+
 const CountryList = ({countries}) => {
     function formatLargeNums (value) {
-        console.log(value.toLocaleString().replace(/,/gi, " "))
-        
-        return value.toLocaleString().replace(/,/gi, "")
+              
+        return value.toLocaleString().replace(/,/gi, " ")
     }
       
         const columns = useMemo(
@@ -28,27 +28,31 @@ const CountryList = ({countries}) => {
                     {
                         Header: "All Cases",
                         accessor: "cases",
-                        Cell: props => formatLargeNums(props.value)   
+                        Cell: ({cell: { value }}) => formatLargeNums(value)
+                       
                     },
                     {
                         Header: "Today's Cases",
                         accessor: "todayCases",
-                        Cell: props => formatLargeNums(props.value)  
+                        Cell: ({cell: { value }}) => formatLargeNums(value)
+                        
                     },
                     {
                         Header: "All Deaths",
                         accessor: "deaths",
-                        Cell: props => formatLargeNums(props.value)  
+                        Cell: ({cell: { value }}) => formatLargeNums(value)
+                    
                     },
                     {
                         Header: "Deaths Per Million",
                         accessor: "deathsPerOneMillion",
-                        Cell: props => formatLargeNums(props.value)  
+                        Cell: ({cell: { value }}) => formatLargeNums(value)
+                  
                     },
                     {
                         Header: "Deaths Today",
                         accessor: "todayDeaths",
-                        Cell: props => formatLargeNums(props.value)  
+                        Cell: ({cell: { value }}) => formatLargeNums(value)
                     },
     
                 ]
