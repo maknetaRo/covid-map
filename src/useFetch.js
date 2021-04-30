@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 
 const useFetch = (urls) => {
     const [countries, setCountries] = useState(null);
+    const [countrJson, setCountrJson] = useState(null);
     const [global, setGlobal] = useState(null);
     const [dataHistorical, setDataHistorical] = useState(null)
     const [dataVaccine, setDataVaccine] = useState(null)
@@ -17,6 +18,7 @@ const useFetch = (urls) => {
             try {
                 const res = await Promise.all(links.map((url) => fetch(url)))
                 const data = await Promise.all(res.map((r) => r.json()))
+                
 
                 const geoJson = {
                     type: "FeatureCollection",
@@ -35,10 +37,12 @@ const useFetch = (urls) => {
                         }
                     })
                 }
+                
                 setCountries(geoJson)
+                setCountrJson(data[0])
                 setGlobal(data[1])
-                // setDataHistorical(data[2])
-                // setDataVaccine(data[3])
+                setDataHistorical(data[2])
+                setDataVaccine(data[3])
                 setLoading(false)
             } catch (error) {
                 console.log(`Failed to fetch data: ${error.message}`, error)
@@ -51,7 +55,7 @@ const useFetch = (urls) => {
     }, [])
 
 
-    return { countries, global, dataHistorical, dataVaccine, loading, error}
+    return { countries, countrJson, global, dataHistorical, dataVaccine, loading, error}
 }
 
 export default useFetch

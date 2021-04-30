@@ -1,4 +1,5 @@
 {
+  "homepage": "https://maknetaro.github.io/covid-map",
   "name": "covid-map",
   "version": "0.1.0",
   "private": true,
@@ -7,11 +8,13 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.1",
+    "gh-pages": "^3.1.0",
     "leaflet": "^1.7.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-leaflet": "^3.1.0",
     "react-scripts": "4.0.3",
+    "react-table": "^7.7.0",
     "styled-components": "^5.2.3",
     "web-vitals": "^1.0.1"
   },
@@ -19,7 +22,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "yarn  build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [

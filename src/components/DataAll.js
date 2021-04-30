@@ -17,10 +17,12 @@ const DataAll = (props) => {
 
 
     return (
+        
+        !props.global ? null : 
         <StyledGridSection>
         
     
-        {/*<StyledGridElem>
+        <StyledGridElem>
         <p>Cases: {cases.toLocaleString().replace(/,/gi, " ")}</p>
    
        
@@ -29,7 +31,7 @@ const DataAll = (props) => {
         <p>Deaths: {deaths.toLocaleString().replace(/,/gi, " ")}</p>
              
               <p>Recoverd: {recovered.toLocaleString().replace(/,/gi, " ")}</p>
-        <p>{date.toLocaleString()}</p> */}
+        <p>{date.toLocaleString()}</p> 
 
         
         </StyledGridSection>

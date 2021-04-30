@@ -2,7 +2,7 @@ import './App.css';
 import Map from './components/Map'
 import DataAll from './components/DataAll'
 import Header from './components/Header'
-import CountryList from './components/CountryList'
+import ListTable from './components/ListTable'
 
 import useFetch from './useFetch'
 
@@ -16,8 +16,7 @@ function App() {
     'https://disease.sh/v3/covid-19/vaccine/coverage/countries?lastdays=30'
   ]
 
-const { countries, global, dataHistorical, dataVaccine, loading, error } = useFetch(urls)
-
+const { countries, countrJson, global, dataHistorical, dataVaccine, loading, error } = useFetch(urls)
      
 if (error) return <p>Error!</p>;
 
@@ -25,9 +24,13 @@ if (error) return <p>Error!</p>;
     <div className="App">
     <Header />
     {loading ? <p>Loading ...</p> :  <Map countries={countries} /> }
-   
-    {/*{loading ? <p>Loading ...</p> : <DataAll global={global} /> }*/} 
-    {loading ? null : <CountryList countries={countries} /> }
+    <section style={{maxWidth: "1140px"}}>
+     {/* {loading ? "" : <DataAll global={global} /> } */}
+      {loading ? "" : <ListTable countries={countrJson} /> }
+      {/*{loading ? null : <CountryList countries={countries} /> } */}
+    </section>
+  
+
    
     </div>
   );
