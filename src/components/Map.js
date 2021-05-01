@@ -49,7 +49,7 @@ const Map = (props) => {
         </Marker>
         )
       })
-      : null} 
+      : ""} 
        
      </MapContainer>
      </section>

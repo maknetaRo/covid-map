@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-import {useTable} from 'react-table'
+import {useTable, useSortBy} from 'react-table'
 
 const Table = ({ columns, data}) => {
 
@@ -14,7 +14,9 @@ const Table = ({ columns, data}) => {
     } = useTable({
         columns,
         data
-    })
+    },
+    useSortBy
+    )
 
     return (
         <table {...getTableProps()}>
@@ -22,7 +24,15 @@ const Table = ({ columns, data}) => {
                 {headerGroups.map(headerGroup => (
                     <tr {...headerGroup.getHeaderGroupProps()}>
                     {headerGroup.headers.map(column => (
-                        <th {...column.getHeaderProps()}>
+                        <th {...column.getHeaderProps(column.getSortByToggleProps)}
+                        className={
+                            column.isSorted
+                                ? column.isSortedDesc
+                                    ? "sort-desc"
+                                    : "sort-asc"
+                                : ""
+                        }
+                        >
                         {column.render('Header')}
                         </th>
                     ))}

@@ -11,6 +11,8 @@ export const Styles = styled.div`
         
     }
     tr {
+      
+      
         :first-child {
             display: none;
         }
@@ -30,28 +32,63 @@ export const Styles = styled.div`
       white-space: nowrap;
       :last-child {
         border-right: 0;
-      }
-      /* :nth-child(3),
-      :nth-child(5) {
-        font-style: italic;
-      } */
-     
+      }    
     }
   
     td {
+      :nth-child(1) {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+      }
       :nth-child(2) {
         white-space: normal;
+        padding-right: 0.5rem;
       }
      
     }
     th {
-        position: sticky;
+        text-align: left;
+          padding-left: 0; 
+   
         white-space: normal;
+        :nth-child(1) {
+          padding-right: 0;
+        }
         :nth-child(2) {
-            text-align: left;
-            padding-left: 0;
+                  
+        }
+  
+        :nth-child(n+3) {
+          padding-left: 0.5rem;
+          padding-right: 0.5rem;
+       
         }
     }
+    .sort-desc {
+      :nth-child(n+3) {
+        box-shadow: none !important;
+    &:after {
+      content: "↓";
+      float: right;
+      padding-left: 2px;
+    }
+      }
+  
   }
+
+  .sort-asc {
+    :nth-child(n+3) {
+      box-shadow: none !important;
+   
+     &:after {
+      content: "↑";
+      float: right;
+      padding-left: 2px;
+    }
+    }
+   
+  }
+    
+    }
 `;
 

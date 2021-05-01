@@ -1,6 +1,6 @@
 import React, {useMemo} from 'react'
 import {Styles} from './modules/TableElements'
-import Table from './modules/Table'
+import Table from './Table'
 
 
 
@@ -19,7 +19,7 @@ const CountryList = ({countries}) => {
                     {
                         Header: "",
                         accessor: "countryInfo.flag",
-                        Cell: ({cell: { value } }) => <img src={value} alt="Flag" width={30} />
+                        Cell: ({cell: { value } }) => <img src={value} alt="Flag" width={30} />                        
                     },
                     {
                         Header: "Localization",
