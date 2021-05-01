@@ -4,16 +4,14 @@ export const Styles = styled.div`
     table {
     width: 100%;
     border-spacing: 0;
-    border: 1px solid #e8eaed;
+    /* border: 1px solid #e8eaed; */
     overflow: auto;
     font-size: 0.9rem;
     thead{
         
     }
-    tr {
-      
-      
-        :first-child {
+    tr {     
+      :first-child {
             display: none;
         }
       :last-child {
@@ -47,20 +45,18 @@ export const Styles = styled.div`
      
     }
     th {
-        text-align: left;
-          padding-left: 0; 
-   
-        white-space: normal;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-weight: 300;
+      font-size: 0.9rem;
+      text-align: left;
+      padding-left: 0;    
+      white-space: normal;
         :nth-child(1) {
           padding-right: 0;
-        }
-        :nth-child(2) {
-                  
-        }
-  
+        }      
         :nth-child(n+3) {
-          padding-left: 0.5rem;
           padding-right: 0.5rem;
+          padding-left: 0.5rem;
        
         }
     }
