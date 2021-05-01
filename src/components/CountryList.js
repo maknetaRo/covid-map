@@ -2,9 +2,6 @@ import React, {useMemo} from 'react'
 import {Styles} from './modules/TableElements'
 import Table from './Table'
 
-
-
-
 const CountryList = ({countries}) => {
     function formatLargeNums (value) {
               

@@ -2,7 +2,8 @@ import './App.css';
 import Map from './components/Map'
 import DataAll from './components/DataAll'
 import Header from './components/Header'
-import ListTable from './components/ListTable'
+import TableSection from './components/TableSection'
+import { StyledMain } from './components/modules/Sections'
 
 import useFetch from './useFetch'
 
@@ -24,11 +25,12 @@ if (error) return <p>Error!</p>;
     <div className="App">
     <Header />
     {loading ? <p>Loading ...</p> :  <Map countries={countries} /> }
-    <section style={{maxWidth: "1140px"}}>
-     {/* {loading ? "" : <DataAll global={global} /> } */}
-      {loading ? "" : <ListTable countries={countrJson} /> }
-      {/*{loading ? null : <CountryList countries={countries} /> } */}
-    </section>
+    <StyledMain>
+    {/* {loading ? "" : <DataAll global={global} /> } */}
+    {loading ? "" : <TableSection countries={countrJson} /> }
+    </StyledMain>
+     
+   
   
 
    
