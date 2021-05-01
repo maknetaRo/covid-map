@@ -1,24 +1,11 @@
 import styled from 'styled-components'
 
 export const StyledMain = styled.main`
-    display: grid;
-    grid-template-columns: fit-content(700px) 1fr;
-    grid-template-rows: 1fr auto;
     max-width: 1140px;
-    grid-template-areas: "chart sidebar"
-                         "table sidebar";  
-
-    @media (max-width:699px) {
-        grid-template-columns: fit-content(700px);
-        grid-template-areas: "chart"
-                             "table"
-                            "sidebar";
-    }
 `;
 
 export const StyledStatSection = styled.section`
-    grid-area: table;
-    width: 100%;
+    max-width: 700px;
     margin: 5%;
     padding: 1rem;
     border-radius: 8px;
