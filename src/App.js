@@ -18,7 +18,6 @@ function App() {
   ]
 
 const { countries, countrJson, global, dataHistorical, dataVaccine, loading, error } = useFetch(urls)
-     
 if (error) return <p>Error!</p>;
 
   return (
@@ -26,14 +25,9 @@ if (error) return <p>Error!</p>;
     <Header />
     {loading ? <p>Loading ...</p> :  <Map countries={countries} /> }
     <StyledMain>
-    {/* {loading ? "" : <DataAll global={global} /> } */}
+     {loading ? "" : <DataAll global={global} /> } 
     {loading ? "" : <TableSection countries={countrJson} /> }
     </StyledMain>
-     
-   
-  
-
-   
     </div>
   );
 }
