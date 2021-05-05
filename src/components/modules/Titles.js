@@ -14,7 +14,7 @@ export const LargeNums = styled.p`
    padding: 0.25rem 0 0.5rem;
    margin-bottom: 0;
 
-   @media (max-width: 768px) {
+   @media (max-width: 699px) {
     font-size: 1.25rem;
    }
 `;

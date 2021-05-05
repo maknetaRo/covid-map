@@ -38,7 +38,7 @@ export const StyledGridSection = styled.section`
   background-color: white;
   color: black;
   position: relative;
-  @media (max-width: 768px) {
+  @media (max-width: 699px) {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(3, 1fr) auto;
    }
@@ -87,7 +87,7 @@ export const StyledGridElem = styled.article`
       left: -24px;
     }
   }
-  @media (max-width: 768px) {
+  @media (max-width: 699px) {
     :nth-child(1),
     :nth-child(2) {
       border-left: 0;
@@ -111,9 +111,8 @@ export const StyledGridElem = styled.article`
     :before {
       width: 0;
     }
-  
-
   }
+}
 `;
 
 export const DateRow = styled.article`
