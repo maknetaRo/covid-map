@@ -21,7 +21,7 @@ const DataAll = (props) => {
         <StyledGridSection>
           {[props.global].map((item) => {
             console.log(item);
-            const { cases, critical, deaths, recovered, tests, todayCases, todayDeaths, updated } = item;
+            const { cases, critical, deaths, todayRecovered, todayCases, todayDeaths, updated } = item;
             const options = { weekday: "long", year: "numeric", month: "long", day: "numeric", hour: "2-digit", minute: "2-digit"}
             const date = new Date(updated);
             console.log(cases);
@@ -54,7 +54,7 @@ const DataAll = (props) => {
                   <Subtitle>
                     Today Recovered:
                     </Subtitle>
-                    <LargeNums>{recovered.toLocaleString()}</LargeNums>
+                    <LargeNums>{todayRecovered.toLocaleString()}</LargeNums>
                   
                 </StyledGridElem>
                 <StyledGridElem>
