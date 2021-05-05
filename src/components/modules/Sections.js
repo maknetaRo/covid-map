@@ -1,12 +1,21 @@
 import styled from 'styled-components';
 
 export const StyledMain = styled.main`
-  max-width: 1140px;
+  max-width: 1440px;
+  display: flex;
+  margin: auto;
+  
+  flex-direction: row;
+  @media (max-width: 789px) {
+    display: flex;
+    flex-direction: column;
+    margin: 2%;
+  }
 `;
 
 export const StyledSection = styled.section`
   max-width: 700px;
-  margin: 5%;
+  margin: 4rem 1rem;
   padding: 1rem;
   border-radius: 8px;
   border: 1px solid #e8eaed;
@@ -16,6 +25,28 @@ export const StyledSection = styled.section`
 export const StyledLeftSide = styled.section`
   max-width: 720px;
   margin: 3rem 0.5%;
+  margin-bottom: 0;
+  @media (max-width: 989px) {
+    max-width: 550px;
+  }
+ 
+`;
+
+export const StyledRightSide = styled.section`
+  max-width: 570px;
+  margin: 3rem 0.5%;
+  @media (max-width: 789px) {
+    margin-top: 0;
+  }
+`;
+
+export const StyledNews = styled.section`
+  padding: 1rem 0 0;
+  margin: 0 auto;
+  max-width: 520px;
+  @media (max-width: 789px) {
+    margin-top: 0;
+  }
 `;
 
 export const StyledTableSection = styled.section`
@@ -41,8 +72,7 @@ export const StyledGridSection = styled.section`
   @media (max-width: 699px) {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(3, 1fr) auto;
-   }
-  
+  }
 `;
 
 export const StyledGridElem = styled.article`
@@ -108,11 +138,11 @@ export const StyledGridElem = styled.article`
     :nth-child(3),
     :nth-child(5),
     :nth-child(6) {
-    :before {
-      width: 0;
+      :before {
+        width: 0;
+      }
     }
   }
-}
 `;
 
 export const DateRow = styled.article`

@@ -6,6 +6,7 @@ const useFetch = (urls) => {
   const [global, setGlobal] = useState(null);
   const [dataHistorical, setDataHistorical] = useState(null);
   const [dataVaccine, setDataVaccine] = useState(null);
+  const [news, setNews] = useState(null)
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -41,6 +42,7 @@ const useFetch = (urls) => {
         setGlobal(data[1]);
         setDataHistorical(data[2]);
         setDataVaccine(data[3]);
+        setNews([data[4]])
         setLoading(false);
       } catch (error) {
         console.log(`Failed to fetch data: ${error.message}`, error);
@@ -56,6 +58,7 @@ const useFetch = (urls) => {
     global,
     dataHistorical,
     dataVaccine,
+    news,
     loading,
     error,
   };
