@@ -8,7 +8,6 @@ export const StyledButton = styled.button`
   border: 1px solid;
   border-color: ${(props) => (props.primary ? '#1a73e8' : '#e8eaed')};
   line-height: 1;
-  cursor: pointer;
   background-color: ${(props) => (props.primary ? '#e8f0fe' : 'transparent')};
   margin-left: 0.6rem;
   margin-right: 0.6rem;

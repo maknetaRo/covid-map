@@ -5,7 +5,7 @@ export const StyledMain = styled.main`
   display: grid;
   grid-template-columns: 60% 40%;
   margin: auto;
-  justify-content: space-around;
+  justify-content: space-evenly;
   
   @media (max-width: 789px) {
     display: flex;
@@ -23,10 +23,18 @@ export const StyledSection = styled.section`
   text-align: left;
 `;
 
+export const ChartSection = styled(StyledSection)`
+  border: 0;
+  border-top: 2px solid #e8eaed;
+  border-radius: 0;
+  padding: 2rem 0 0;
+`;
+
 export const StyledLeftSide = styled.section`
   max-width: 720px;
   margin: 3rem 0.5%;
   margin-bottom: 0;
+  padding-left: 1rem;
   @media (max-width: 989px) {
     max-width: 550px;
   }
@@ -36,6 +44,7 @@ export const StyledLeftSide = styled.section`
 export const StyledRightSide = styled.section`
   max-width: 570px;
   margin: 3rem 0.5%;
+  padding-right: 1rem;
   @media (max-width: 789px) {
     margin-top: 0;
   }

@@ -5,6 +5,7 @@ export const SectionTitle = styled.h3`
   font-weight: 500;
   font-size: 1.4rem;
   margin-top: 0;
+  margin-bottom: 0;
 `;
 
 export const ArticleTitle = styled.h4`
@@ -15,7 +16,7 @@ export const ArticleTitle = styled.h4`
 
 export const LargeNums = styled.p`
    font-family: 'Noto Sans JP', sans-serif;
-   font-size: 1.75rem;
+   font-size: 1.7rem;
    margin-top: 0;
    padding: 0.25rem 0 0.5rem;
    margin-bottom: 0;

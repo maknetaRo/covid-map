@@ -7,10 +7,11 @@ import { StyledButton } from './modules/Buttons';
 const TableSection = (props) => {
   return (
     <StyledSection>
+    <div style={{display: "flex", justifyContent: "space-between"}}>
       <SectionTitle>Statistics</SectionTitle>
-      <div>
+      
         <StyledButton primary>Cases</StyledButton>
-       {/* <StyledButton>Vaccines</StyledButton>*/}
+       
       </div>
       <StyledTableSection>
         <CountryList countries={props.countries} />
