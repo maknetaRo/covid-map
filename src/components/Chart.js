@@ -1,16 +1,31 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { StyledChart } from './modules/StyledChart';
-import { select, line, curveCardinal } from 'd3';
+import { select, line, curveCardinal, axisBottom, axisLeft, scaleLinear } from 'd3';
 
 const Chart = () => {
   const [data, setData] = useState([25, 37, 43, 56, 20, 65, 75]);
   const svgRef = useRef();
+
   useEffect(() => {
     const svg = select(svgRef.current);
+    const xScale = scaleLinear()
+      .domain([0, data.length - 1])
+      .range([0, 300]);
+
+    const yScale = scaleLinear().domain([0, 150]).range([150, 0]);
+
+    const xAxis = axisBottom(xScale).ticks(data.length).tickFormat(index => index+1);
+    
+    svg.select('.x-axis').style("transform", "translateY(150px").call(xAxis);
+
+    const yAxis = axisLeft(yScale)
+    svg.select('.y-axis').call(yAxis);
+
     const myLine = line()
-      .x((value, index) => index * 50)
-      .y((value) => 150 - value)
+      .x((value, index) => xScale(index))
+      .y(yScale)
       .curve(curveCardinal);
+
     // svg
     //   .selectAll('circle')
     //   .data(data)
@@ -25,17 +40,20 @@ const Chart = () => {
     //   .attr('stroke', 'red');
     // console.log(svg);
     svg
-      .selectAll('path')
+      .selectAll('.line')
       .data([data])
       .join('path')
-      .attr('d', (value) => myLine(value))
+      .attr("class", "line")
+      .attr('d', myLine)
       .attr('fill', 'none')
       .attr('stroke', 'blue');
   }, [data]);
   return (
     <React.Fragment>
       <StyledChart ref={svgRef}>
-        <path d="M0,150 100,100 150,120" stroke="blue" fill="none" />
+        <g className="x-axis" />
+        <g className='y-axis' />
+
       </StyledChart>
 
       <button onClick={() => setData(data.map((value) => value + 5))}>
