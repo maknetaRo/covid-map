@@ -2,10 +2,11 @@ import styled from 'styled-components';
 
 export const StyledMain = styled.main`
   max-width: 1440px;
-  display: flex;
+  display: grid;
+  grid-template-columns: 60% 40%;
   margin: auto;
+  justify-content: space-around;
   
-  flex-direction: row;
   @media (max-width: 789px) {
     display: flex;
     flex-direction: column;
