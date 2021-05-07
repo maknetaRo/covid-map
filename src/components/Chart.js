@@ -68,6 +68,9 @@ const Chart = ({ cases }) => {
 
     const maxValue = Math.max(...values);
 
+    const newData = { key: [...keys], value: [...values] };
+    console.log(newData);
+
     const xScale = scaleTime()
       .domain([minDate, maxDate])
       .range([0, dimensions.width]);
@@ -76,9 +79,8 @@ const Chart = ({ cases }) => {
       .domain([0, maxValue])
       .range([dimensions.height, 0]);
 
-    const xAxis = axisBottom(xScale)
-      .ticks(5)
-      .tickFormat(timeFormat('%B %d, %Y'));
+    const xAxis = axisBottom(xScale).ticks(5).tickFormat(timeFormat('%B %d'));
+
 
     svg
       .select('.x-axis')
@@ -89,14 +91,9 @@ const Chart = ({ cases }) => {
     svg.select('.y-axis').call(yAxis);
 
     const myLine = line()
-      .x(function (d) {
-        return xScale(d.key);
-      })
-      .y(function (d) {
-        return yScale(d.value);
-      })
+      .x((keys, i) => xScale(keys[i]))
+      .y((values) => yScale(values))
       .curve(curveBasis);
-
 
     svg
       .selectAll('.line')
@@ -110,7 +107,7 @@ const Chart = ({ cases }) => {
 
   return (
     <React.Fragment>
-      <div ref={wrapperRef} style={{ margin: '2rem 0 2rem 4rem' }}>
+      <div ref={wrapperRef} style={{ margin: '2rem 0 2rem 3rem' }}>
         <StyledChart ref={svgRef}>
           <g className="x-axis" />
           <g className="y-axis" />

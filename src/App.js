@@ -13,7 +13,6 @@ import {
 import useFetch from './useFetch';
 import DataHistorical from './components/DataHistorical';
 
-
 function App() {
   const urls = [
     'https://disease.sh/v3/covid-19/countries',
@@ -48,7 +47,9 @@ function App() {
           {loading ? '' : <TableSection countries={countrJson} />}
           {loading ? '' : <DataHistorical dataHistAll={dataHistAll} />}
         </StyledLeftSide>
-      {/*  <StyledRightSide>{loading ? '' : <News news={news} />}</StyledRightSide>*/}
+        <StyledRightSide>
+         {loading ? '' : <News />} 
+        </StyledRightSide>
       </StyledMain>
     </div>
   );

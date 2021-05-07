@@ -5,7 +5,7 @@ import {
   StyledSection,
   DateRow,
 } from './modules/Sections';
-import { SectionTitle, LargeNums, Subtitle } from './modules/Titles';
+import { SectionTitle, LargeNums, Subtitle, SubtitleGrid } from './modules/Titles';
 
 const DataAll = (props) => {
   return (
@@ -35,28 +35,28 @@ const DataAll = (props) => {
             return (
               <>
                 <StyledGridElem>
-                  <Subtitle>Total Cases:</Subtitle>
+                  <SubtitleGrid>Total Cases:</SubtitleGrid>
                   <LargeNums>{cases.toLocaleString()}</LargeNums>
                 </StyledGridElem>
                 <StyledGridElem>
-                  <Subtitle>Critical: </Subtitle>
+                  <SubtitleGrid>Critical: </SubtitleGrid>
                   <LargeNums>{critical.toLocaleString()}</LargeNums>
                 </StyledGridElem>
                 <StyledGridElem>
-                  <Subtitle>Deaths: </Subtitle>
+                  <SubtitleGrid>Deaths: </SubtitleGrid>
                   <LargeNums>{deaths.toLocaleString()}</LargeNums>
                 </StyledGridElem>
 
                 <StyledGridElem>
-                  <Subtitle>Today Cases: </Subtitle>
+                  <SubtitleGrid>Today Cases: </SubtitleGrid>
                   <LargeNums>{todayCases.toLocaleString()}</LargeNums>
                 </StyledGridElem>
                 <StyledGridElem>
-                  <Subtitle>Today Recovered:</Subtitle>
+                  <SubtitleGrid>Today Recovered:</SubtitleGrid>
                   <LargeNums>{todayRecovered.toLocaleString()}</LargeNums>
                 </StyledGridElem>
                 <StyledGridElem>
-                  <Subtitle>Today Deaths:</Subtitle>
+                  <SubtitleGrid>Today Deaths:</SubtitleGrid>
                   <LargeNums>{todayDeaths.toLocaleString()}</LargeNums>
                 </StyledGridElem>
                 <DateRow>

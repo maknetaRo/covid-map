@@ -94,6 +94,11 @@ export const StyledGridElem = styled.article`
   border: 1px solid #dadce0;
   margin-bottom: 0;
   position: relative;
+  text-align: center;
+  @media (max-width: 699px) {
+    text-align: left;
+  }
+  
 
   :nth-child(1),
   :nth-child(2),
@@ -110,6 +115,7 @@ export const StyledGridElem = styled.article`
     border-right: 0;
   }
 
+
   :nth-child(2),
   :nth-child(3),
   :nth-child(5),
@@ -124,7 +130,7 @@ export const StyledGridElem = styled.article`
       right: auto;
       bottom: 0;
       display: block;
-      left: -24px;
+      /* left: -24px; */
     }
   }
   @media (max-width: 699px) {
