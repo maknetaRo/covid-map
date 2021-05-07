@@ -1,4 +1,5 @@
 import React from 'react';
+import Chart from './Chart'
 import { StyledSection, ChartSection } from './modules/Sections';
 import { SectionTitle } from './modules//Titles';
 import { StyledButton } from './modules/Buttons';
@@ -21,17 +22,8 @@ const DataHistorical = ({ dataHistAll }) => {
               <React.Fragment>
                 <StyledSection style={{ marginLeft: '0', marginRight: '0' }}>
                   <SectionTitle>Cases</SectionTitle>
-                  {Object.keys(cases).map((obj) => {
-                    const day = new Date(obj).toLocaleDateString();
-
-                    const number = cases[obj].toLocaleString();
-                    //console.log(day, number);
-                    return (
-                      <li>
-                        {day} - {number}
-                      </li>
-                    );
-                  })}
+                  <Chart cases={cases} />
+                 
                 </StyledSection>
                 <StyledSection style={{ marginLeft: '0', marginRight: '0' }}>
                   <SectionTitle>Deaths</SectionTitle>
