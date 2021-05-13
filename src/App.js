@@ -11,6 +11,7 @@ import {
 } from './components/modules/Sections';
 
 import useFetch from './useFetch';
+import DataHistorical from './components/DataHistorical';
 
 function App() {
   const urls = [
@@ -19,6 +20,7 @@ function App() {
     'https://disease.sh/v3/covid-19/historical?lastdays=30',
     'https://disease.sh/v3/covid-19/vaccine/coverage/countries?lastdays=30',
     'https://gnews.io/api/v4/search?q=covid&lang=en&token=05062032a02062dd9bad7e6b0bbf1357',
+    'https://disease.sh/v3/covid-19/historical/all?lastdays=500',
   ];
 
   const {
@@ -28,11 +30,13 @@ function App() {
     dataHistorical,
     dataVaccine,
     news,
+    dataHistAll,
     loading,
     error,
   } = useFetch(urls);
   if (error) return <p>Error!</p>;
-  console.log(news);
+  console.log(global)
+  console.log(dataHistAll);
 
   return (
     <div className="App">
@@ -42,8 +46,11 @@ function App() {
         <StyledLeftSide>
           {loading ? '' : <DataAll global={global} />}
           {loading ? '' : <TableSection countries={countrJson} />}
+          {loading ? '' : <DataHistorical dataHistAll={dataHistAll} />}
         </StyledLeftSide>
-        <StyledRightSide>{loading ? '' : <News news={news} />}</StyledRightSide>
+        <StyledRightSide>
+         {loading ? '' : <News news={news} />} 
+        </StyledRightSide>
       </StyledMain>
     </div>
   );
