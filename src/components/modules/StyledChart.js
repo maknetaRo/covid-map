@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 export const StyledChart = styled.svg`
-  background: #e8f0fe;
+  background: transparent;
   overflow: visible;
   display: block;
   width: 100%;
-  height: 400px;
+  height: 200px;
 `;

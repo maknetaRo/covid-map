@@ -7,7 +7,7 @@ const News = (props) => {
   return (
     <StyledSection>
       <SectionTitle>Top News</SectionTitle>
-      {!props.news ? null : (
+      {!props.news ? "" : (
         <StyledNews>
           {props.news[0].articles.map((item) => {
             return <NewsArticle {...item} />;

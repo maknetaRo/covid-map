@@ -10,7 +10,7 @@ const DataHistorical = ({ dataHistAll }) => {
     <ChartSection>
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
         <SectionTitle>Visualisations</SectionTitle>
-        <StyledButton primary>30 days</StyledButton>
+        <StyledButton primary>Always</StyledButton>
       </div>
       {!dataHistAll ? null : (
         <>
@@ -22,23 +22,12 @@ const DataHistorical = ({ dataHistAll }) => {
               <React.Fragment>
                 <StyledSection style={{ marginLeft: '0', marginRight: '0' }}>
                   <SectionTitle>Cases</SectionTitle>
-                  <Chart cases={cases} />
-                 
+                  {!cases ? "" :  <Chart data={cases} /> }                 
                 </StyledSection>
                 <StyledSection style={{ marginLeft: '0', marginRight: '0' }}>
                   <SectionTitle>Deaths</SectionTitle>
-                  {Object.keys(deaths).map((obj) => {
-                    const day = new Date(obj).toLocaleDateString();
-
-                    const number = cases[obj].toLocaleString();
-                    //console.log(day, number);
-                    return (
-                      <li>
-                        {day} - {number}
-                      </li>
-                    );
-                  })}
-                </StyledSection>
+                  {!deaths ? "" : <Chart data={deaths} />}
+            </StyledSection>
               </React.Fragment>
             );
           })}
