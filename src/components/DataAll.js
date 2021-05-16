@@ -1,14 +1,10 @@
 import React from 'react';
-import {
-  StyledGridElem,
-  StyledGridSection,
-  StyledSection,
-  DateRow,
-} from './modules/Sections';
+import { StyledGridSection, StyledSection, DateRow } from './modules/Sections';
+import { StyledGridElem } from './modules/GridElem';
+
 import { SectionTitle, LargeNums, Subtitle } from './modules/Titles';
 
 const DataAll = (props) => {
-
   if (!props.global) return '';
   if (props.global) {
     const {
