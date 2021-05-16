@@ -1,11 +1,17 @@
 # Covid Map
 This is my project to learn React. I'm creating the project and writing notes in public.
+I'm updating my website regularly and it can be seen live on github pages:
+Live: https://maknetaro.github.io/covid-map/
+
 You can read my notes on my blog:
 
 | No | Link | Date |
 | --- | --- | --- |
 | 1 | [Covid map React project day 1](http://makneta.herokuapp.com/post/covid-map-react-project-day-1/) | April 24, 2021 |
 | 2 | [Covid map React project day 2](http://makneta.herokuapp.com/post/covid-map-react-project-day-2/) | April 25, 2021 |
+| 3 | [Covid map React project day 3](http://makneta.herokuapp.com/post/covid-map-react-project-day-3/) | May 1, 2021 |
+| 4 | [Covid map React project day 4](http://makneta.herokuapp.com/post/how-to-create-tables-with-react-table-library-covid-map-project-day-4//) | May 2, 2021 |
+| 5 | [Objects are not valid as a React Child - Covid map React project day 4](http://makneta.herokuapp.com/post/objects-are-not-valid-as-a-react-child-covid-map-project-part-5/) | May 9, 2021 |
 
 
 ---
