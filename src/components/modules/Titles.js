@@ -35,6 +35,7 @@ export const Subtitle = styled.h5`
   margin-top: 0;
   margin-bottom: 0;
   color: #5f6368;
+  padding-left: 0.5rem;
 `;
 
 export const SubtitleGrid = styled(Subtitle)`
