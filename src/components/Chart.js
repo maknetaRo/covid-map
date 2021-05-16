@@ -9,7 +9,7 @@ import {
   scaleLinear,
   scaleTime,
   timeFormat,
-
+  pointer,
 } from 'd3';
 
 const useResizeObserver = (ref) => {
@@ -62,17 +62,22 @@ const Chart = (props) => {
     const values = getValues(data);
 
     const maxValue = Math.max(...values);
-  
 
     const xScale = scaleTime()
-      .domain(extent(keys, (d)=>{return d}))
+      .domain(
+        extent(keys, (d) => {
+          return d;
+        })
+      )
       .range([0, dimensions.width]);
 
     const yScale = scaleLinear()
       .domain([0, maxValue])
       .range([dimensions.height, 0]);
 
-    const xAxis = axisBottom(xScale).ticks(5).tickFormat(timeFormat('%B %d'));
+    const xAxis = axisBottom(xScale)
+      .ticks(5)
+      .tickFormat(timeFormat('%B %d, %y '));
 
     svg
       .select('.x-axis')
@@ -85,26 +90,26 @@ const Chart = (props) => {
     const newData = keys.map((i, index) => {
       return {
         date: i,
-        amount: values[index]
-      }
-    })
-    
-      const myLine = line()
-        .x((d) => xScale(d.date))
-        .y((d) => yScale(d.amount))
-        // .curve(curveBasis);
+        amount: values[index],
+      };
+    });
 
-        svg
-        .selectAll('.line')
-        .data(newData)
-        .join('path')
-        .attr('class', 'line')
-        .attr('d', myLine(newData))
-        .attr('fill', 'none')
-        .attr('stroke', '#1a73e8')
-        .attr('stroke-linejoin', 'round')
-        .attr('stroke-linecap', 'round')
-        .attr('stroke-width', 2);
+    const myLine = line()
+      .x((d) => xScale(d.date))
+      .y((d) => yScale(d.amount));
+    // .curve(curveBasis);
+
+    svg
+      .selectAll('.line')
+      .data(newData)
+      .join('path')
+      .attr('class', 'line')
+      .attr('d', myLine(newData))
+      .attr('fill', 'none')
+      .attr('stroke', '#1a73e8')
+      .attr('stroke-linejoin', 'round')
+      .attr('stroke-linecap', 'round')
+      .attr('stroke-width', 2)
   }, [data, dimensions]);
 
   return (
@@ -113,6 +118,9 @@ const Chart = (props) => {
         <StyledChart ref={svgRef}>
           <g className="x-axis" />
           <g className="y-axis" />
+          <g className="tooltip-area">
+            <text className="tooltip-area__text"></text>
+          </g>
         </StyledChart>
       </div>
     </React.Fragment>

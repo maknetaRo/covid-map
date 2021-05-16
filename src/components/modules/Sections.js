@@ -3,9 +3,11 @@ import styled from 'styled-components';
 export const StyledMain = styled.main`
   max-width: 1440px;
   display: grid;
-  grid-template-columns: 60% 40%;
+  grid-template-columns: 65% 35%; 
   margin: auto;
-  justify-content: space-evenly;
+  justify-content: space-around;
+  margin-left: 3%;
+  margin-right: 3%;
   
   @media (max-width: 789px) {
     display: flex;
