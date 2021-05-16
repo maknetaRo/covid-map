@@ -1,80 +1,72 @@
 import React from 'react';
-import { StyledGridSection, StyledSection, DateRow } from './modules/Sections';
 import {
-  SectionTitle,
-  LargeNums,
-  Subtitle,
-  SubtitleGrid,
-} from './modules/Titles';
-import { StyledGridElem } from './modules/GridElem';
-import GridElem from './modules/GridElem';
+  StyledGridElem,
+  StyledGridSection,
+  StyledSection,
+  DateRow,
+} from './modules/Sections';
+import { SectionTitle, LargeNums, Subtitle } from './modules/Titles';
 
 const DataAll = (props) => {
-  return (
-    <StyledSection>
-      <SectionTitle>Worldwide</SectionTitle>
-      {!props.global ? null : (
+
+  if (!props.global) return '';
+  if (props.global) {
+    const {
+      cases,
+      critical,
+      deaths,
+      todayRecovered,
+      todayCases,
+      todayDeaths,
+      updated,
+    } = props.global;
+    const options = {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+    };
+    const date = new Date(updated);
+
+    return (
+      <StyledSection>
+        <SectionTitle>Worldwide</SectionTitle>
         <StyledGridSection>
-          {[props.global].map((item) => {
-            const {
-              cases,
-              critical,
-              deaths,
-              todayRecovered,
-              todayCases,
-              todayDeaths,
-              updated,
-            } = item;
-            const options = {
-              weekday: 'long',
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric',
-              hour: '2-digit',
-              minute: '2-digit',
-            };
-            const date = new Date(updated);
-          
+          <StyledGridElem>
+            <Subtitle>Total Cases:</Subtitle>
+            <LargeNums>{cases.toLocaleString()}</LargeNums>
+          </StyledGridElem>
+          <StyledGridElem>
+            <Subtitle>Critical: </Subtitle>
+            <LargeNums>{critical.toLocaleString()}</LargeNums>
+          </StyledGridElem>
+          <StyledGridElem>
+            <Subtitle>Deaths: </Subtitle>
+            <LargeNums>{deaths.toLocaleString()}</LargeNums>
+          </StyledGridElem>
 
-            return (
-              <>              
-                <StyledGridElem>
-                  <SubtitleGrid>Total Cases:</SubtitleGrid>
-                  <LargeNums>{cases.toLocaleString()}</LargeNums>
-                </StyledGridElem>
-                <StyledGridElem>
-                  <SubtitleGrid>Critical: </SubtitleGrid>
-                  <LargeNums>{critical.toLocaleString()}</LargeNums>
-                </StyledGridElem>
-                <StyledGridElem>
-                  <SubtitleGrid>Deaths: </SubtitleGrid>
-                  <LargeNums>{deaths.toLocaleString()}</LargeNums>
-                </StyledGridElem>
-
-                <StyledGridElem>
-                  <SubtitleGrid>Today Cases: </SubtitleGrid>
-                  <LargeNums>{todayCases.toLocaleString()}</LargeNums>
-                </StyledGridElem>
-                <StyledGridElem>
-                  <SubtitleGrid>Today Recovered:</SubtitleGrid>
-                  <LargeNums>{todayRecovered.toLocaleString()}</LargeNums>
-                </StyledGridElem>
-                <StyledGridElem>
-                  <SubtitleGrid>Today Deaths:</SubtitleGrid>
-                  <LargeNums>{todayDeaths.toLocaleString()}</LargeNums>
-                </StyledGridElem>
-                
-                <DateRow>
-                  <Subtitle>Updated: </Subtitle>
-                  <p>{date.toLocaleString('default', options)}</p>
-                </DateRow>
-              </>
-            );
-          })}
+          <StyledGridElem>
+            <Subtitle>Today Cases: </Subtitle>
+            <LargeNums>{todayCases.toLocaleString()}</LargeNums>
+          </StyledGridElem>
+          <StyledGridElem>
+            <Subtitle>Today Recovered:</Subtitle>
+            <LargeNums>{todayRecovered.toLocaleString()}</LargeNums>
+          </StyledGridElem>
+          <StyledGridElem>
+            <Subtitle>Today Deaths:</Subtitle>
+            <LargeNums>{todayDeaths.toLocaleString()}</LargeNums>
+          </StyledGridElem>
+          <DateRow>
+            <Subtitle>Updated: </Subtitle>
+            <p>{date.toLocaleString('default', options)}</p>
+          </DateRow>
         </StyledGridSection>
-      )}
-    </StyledSection>
-  );
+      </StyledSection>
+    );
+  }
 };
 
 export default DataAll;
