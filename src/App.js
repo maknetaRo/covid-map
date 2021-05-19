@@ -41,15 +41,15 @@ function App() {
   return (
     <div className="App">
       <Header />
-      {loading ? <p>Loading ...</p> : <Map countries={countries} />}
+      {loading ? <Map /> : <Map countries={countries} />}
       <StyledMain>
         <StyledLeftSide>
-          {loading ? '' : <DataAll global={global} />}
-          {loading ? '' : <TableSection countries={countrJson} />}
-          {loading ? '' : <DataHistorical dataHistAll={dataHistAll} />}
+          {loading ? <DataAll /> : <DataAll global={global} />}
+          {loading ? <TableSection /> : <TableSection countries={countrJson} />}
+          {loading ? <DataHistorical /> : <DataHistorical dataHistAll={dataHistAll} />}
         </StyledLeftSide>
         <StyledRightSide>
-         {loading ? '' : <News news={news} />} 
+         {loading ? <News /> : <News news={news} />} 
         </StyledRightSide>
       </StyledMain>
     </div>

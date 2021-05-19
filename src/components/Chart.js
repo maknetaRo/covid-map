@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
+
 import { StyledChart } from './modules/StyledChart';
 import {
   select,
@@ -94,10 +95,10 @@ const Chart = (props) => {
       };
     });
 
+
     const myLine = line()
       .x((d) => xScale(d.date))
       .y((d) => yScale(d.amount));
-    // .curve(curveBasis);
 
     svg
       .selectAll('.line')
@@ -109,7 +110,8 @@ const Chart = (props) => {
       .attr('stroke', '#1a73e8')
       .attr('stroke-linejoin', 'round')
       .attr('stroke-linecap', 'round')
-      .attr('stroke-width', 2)
+      .attr('stroke-width', 2);
+  
   }, [data, dimensions]);
 
   return (
@@ -118,9 +120,7 @@ const Chart = (props) => {
         <StyledChart ref={svgRef}>
           <g className="x-axis" />
           <g className="y-axis" />
-          <g className="tooltip-area">
-            <text className="tooltip-area__text"></text>
-          </g>
+         
         </StyledChart>
       </div>
     </React.Fragment>
