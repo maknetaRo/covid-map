@@ -19,7 +19,7 @@ function App() {
     'https://disease.sh/v3/covid-19/all',
     'https://disease.sh/v3/covid-19/historical?lastdays=30',
     'https://disease.sh/v3/covid-19/vaccine/coverage/countries?lastdays=30',
-    'https://gnews.io/api/v4/search?q=covid&lang=en&token=05062032a02062dd9bad7e6b0bbf1357',
+    'https://gnews.io/api/v4/search?q=covid&lang=en&token=0238548cd532be2c2f65a972615d655a',
     'https://disease.sh/v3/covid-19/historical/all?lastdays=500',
   ];
 
@@ -35,7 +35,7 @@ function App() {
     error,
   } = useFetch(urls);
   if (error) return <p>Error!</p>;
-  console.log(global)
+  console.log(global);
   console.log(dataHistAll);
 
   return (
@@ -46,10 +46,14 @@ function App() {
         <StyledLeftSide>
           {loading ? <DataAll /> : <DataAll global={global} />}
           {loading ? <TableSection /> : <TableSection countries={countrJson} />}
-          {loading ? <DataHistorical /> : <DataHistorical dataHistAll={dataHistAll} />}
+          {loading ? (
+            <DataHistorical />
+          ) : (
+            <DataHistorical dataHistAll={dataHistAll} />
+          )}
         </StyledLeftSide>
         <StyledRightSide>
-         {loading ? <News /> : <News news={news} />} 
+          {loading ? <News /> : <News news={news} />}
         </StyledRightSide>
       </StyledMain>
     </div>
