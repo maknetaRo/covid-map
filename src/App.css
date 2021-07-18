@@ -1,3 +1,6 @@
+@import '~mapbox-gl/dist/mapbox-gl.css';
+@import '~leaflet/dist/leaflet.css';
+
 .App {
   display: flex;
   flex-direction: column;
