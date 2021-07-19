@@ -1,18 +1,12 @@
-import React from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css';
-import * as L from 'leaflet';
-
-const redIcon = new L.Icon({
-  iconUrl:
-    'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
-  shadowUrl:
-    'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  shadowSize: [41, 41],
-});
+import React, { useRef, useEffect } from 'react';
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Popup,
+  Circle,
+  CircleMarker,
+} from 'react-leaflet';
 
 const Map = (props) => {
   const center_position = [31.262218, 34.801472];
@@ -24,11 +18,11 @@ const Map = (props) => {
         className="map"
         center={center_position}
         zoom={zoom}
-        scrollWheelZoom={false}
+        scrollWheelZoom={true}
       >
         <TileLayer
           attribution='Imagery &copy; <a href="https://www.mapbox.com/">Mapbox</a>'
-          url={`https://api.mapbox.com/styles/v1/${process.env.USERNAME}/${process.env.STYLE_ID}/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.ACCESS_TOKEN}`}
+          url={`https://api.mapbox.com/styles/v1/${'makneta'}/${'ckr9r5y742gl418qxosg006ef'}/tiles/256/{z}/{x}/{y}@2x?access_token=${'pk.eyJ1IjoibWFrbmV0YSIsImEiOiJja3I5b2FpMjgwZzcxMzJxdTkya3VwMnRzIn0._BHaxKDBKFc3SnRygukKZQ'}`}
         />
         {props.countries
           ? props.countries.features.map((place) => {
@@ -48,10 +42,14 @@ const Map = (props) => {
               let date = new Date(updated);
 
               return (
-                <Marker
-                  icon={redIcon}
-                  position={coordinates}
+                <CircleMarker
+                  center={coordinates}
                   key={place.properties.country}
+                  color={'rgba(26, 115, 232, 0.878)'}
+                  fillColor={'rgba(26, 115, 232, 0.659)'}
+                  fillOpacity={0.5}
+                  weight={2}
+                  radius={Math.log(cases)}
                 >
                   <Popup>
                     <img src={flag} style={{ width: '30px', height: 'auto' }} />
@@ -72,7 +70,7 @@ const Map = (props) => {
                       <strong>Last Update:</strong> {date.toLocaleDateString()}
                     </p>
                   </Popup>
-                </Marker>
+                </CircleMarker>
               );
             })
           : ''}
