@@ -22,12 +22,14 @@
 .leaflet-popup {
   top: 0 !important;
 }
+
 .leaflet-popup-content {
   line-height: 1 !important;
 }
 
 .leaflet-popup-content p {
   margin: 9px 0 !important;
+  font-size: 14px;
 }
 
 .leaflet-popup-tip-container {
