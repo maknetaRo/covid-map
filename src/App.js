@@ -2,7 +2,7 @@ import './App.css';
 import Map from './components/Map';
 import DataAll from './components/DataAll';
 import Header from './components/Header';
-import News from './components/News';
+
 import TableSection from './components/TableSection';
 import {
   StyledMain,
