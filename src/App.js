@@ -2,7 +2,7 @@ import './App.css';
 import Map from './components/Map';
 import DataAll from './components/DataAll';
 import Header from './components/Header';
-import News from './components/News';
+
 import TableSection from './components/TableSection';
 import {
   StyledMain,
@@ -19,7 +19,7 @@ function App() {
     'https://disease.sh/v3/covid-19/all',
     'https://disease.sh/v3/covid-19/historical?lastdays=30',
     'https://disease.sh/v3/covid-19/vaccine/coverage/countries?lastdays=30',
-    'https://gnews.io/api/v4/search?q=covid&lang=en&token=0238548cd532be2c2f65a972615d655a',
+    
     'https://disease.sh/v3/covid-19/historical/all?lastdays=500',
   ];
 
@@ -29,7 +29,7 @@ function App() {
     global,
     dataHistorical,
     dataVaccine,
-    news,
+    
     dataHistAll,
     loading,
     error,
@@ -53,7 +53,7 @@ function App() {
           )}
         </StyledLeftSide>
         <StyledRightSide>
-          {loading ? <News /> : <News news={news} />}
+          
         </StyledRightSide>
       </StyledMain>
     </div>
