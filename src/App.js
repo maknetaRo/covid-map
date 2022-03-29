@@ -53,7 +53,7 @@ function App() {
           )}
         </StyledLeftSide>
         <StyledRightSide>
-          
+
         </StyledRightSide>
       </StyledMain>
     </div>

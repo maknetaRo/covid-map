@@ -1,3 +1,6 @@
+@import '~mapbox-gl/dist/mapbox-gl.css';
+@import '~leaflet/dist/leaflet.css';
+
 .App {
   display: flex;
   flex-direction: column;
@@ -7,7 +10,7 @@
 
 .map {
   width: 100vw;
-  height: 55vh;
+  height: 60vh;
   margin-top: 1px;
 }
 
@@ -19,12 +22,14 @@
 .leaflet-popup {
   top: 0 !important;
 }
+
 .leaflet-popup-content {
   line-height: 1 !important;
 }
 
 .leaflet-popup-content p {
   margin: 9px 0 !important;
+  font-size: 14px;
 }
 
 .leaflet-popup-tip-container {
