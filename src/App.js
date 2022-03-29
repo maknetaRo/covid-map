@@ -53,7 +53,7 @@ function App() {
           )}
         </StyledLeftSide>
         <StyledRightSide>
-          {loading ? <News /> : <News news={news} />}
+          {/*{loading ? <News /> : <News news={news} />}*/}
         </StyledRightSide>
       </StyledMain>
     </div>
