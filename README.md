@@ -1,7 +1,6 @@
 # Covid Map
 This is my project to learn React. I'm creating the project and writing notes in public.
-I'm updating my website regularly and it can be seen live on github pages:
-Live: https://maknetaro.github.io/covid-map/
+
 
 You can read my notes on my blog:
 
