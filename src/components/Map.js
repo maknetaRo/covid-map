@@ -8,7 +8,6 @@ const Map = (props) => {
   const scaleRadius = (cases) => {
     let number = 6000000;
     let r = (cases / number) * 10 + 1;
-    console.log(r);
     if (r < 10) {
       return 4;
     }

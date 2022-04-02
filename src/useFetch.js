@@ -6,7 +6,7 @@ const useFetch = (urls) => {
   const [global, setGlobal] = useState(null);
   const [dataHistorical, setDataHistorical] = useState(null);
   const [dataVaccine, setDataVaccine] = useState(null);
-  
+
   const [dataHistAll, setDataHistAll] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -14,7 +14,6 @@ const useFetch = (urls) => {
   useEffect(() => {
     const fetchData = async () => {
       const links = urls;
-      console.log(links);
       setLoading(true);
       try {
         const res = await Promise.all(links.map((url) => fetch(url)));
@@ -43,8 +42,8 @@ const useFetch = (urls) => {
         setGlobal(data[1]);
         setDataHistorical(data[2]);
         setDataVaccine(data[3]);
-       
-        setDataHistAll([data[5]])
+
+        setDataHistAll([data[4]]);
         setLoading(false);
       } catch (error) {
         console.log(`Failed to fetch data: ${error.message}`, error);
@@ -60,7 +59,7 @@ const useFetch = (urls) => {
     global,
     dataHistorical,
     dataVaccine,
-    
+
     dataHistAll,
     loading,
     error,

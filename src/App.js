@@ -35,8 +35,6 @@ function App() {
     error,
   } = useFetch(urls);
   if (error) return <p>Error!</p>;
-  console.log(global);
-  console.log(dataHistAll);
 
   return (
     <div className="App">
@@ -49,7 +47,7 @@ function App() {
           {loading ? (
             <DataHistorical />
           ) : (
-            <DataHistorical dataHistAll={dataHistorical} />
+            <DataHistorical dataHistAll={dataHistAll} />
           )}
         </StyledLeftSide>
         <StyledRightSide></StyledRightSide>
