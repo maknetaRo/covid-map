@@ -19,7 +19,6 @@ function App() {
     'https://disease.sh/v3/covid-19/all',
     'https://disease.sh/v3/covid-19/historical?lastdays=30',
     'https://disease.sh/v3/covid-19/vaccine/coverage/countries?lastdays=30',
-
     'https://disease.sh/v3/covid-19/historical/all?lastdays=500',
   ];
 
