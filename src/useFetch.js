@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 const useFetch = (urls) => {
   const [countries, setCountries] = useState(null);
@@ -6,7 +6,7 @@ const useFetch = (urls) => {
   const [global, setGlobal] = useState(null);
   const [dataHistorical, setDataHistorical] = useState(null);
   const [dataVaccine, setDataVaccine] = useState(null);
-
+  const [dataNews, setDataNews] = useState(null);
   const [dataHistAll, setDataHistAll] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -20,17 +20,17 @@ const useFetch = (urls) => {
         const data = await Promise.all(res.map((r) => r.json()));
 
         const geoJson = {
-          type: 'FeatureCollection',
+          type: "FeatureCollection",
           features: data[0].map((country = {}) => {
             const { countryInfo = {} } = country;
             const { lat, long: lng } = countryInfo;
             return {
-              type: 'Feature',
+              type: "Feature",
               properties: {
                 ...country,
               },
               geometry: {
-                type: 'Point',
+                type: "Point",
                 coordinates: [lat, lng],
               },
             };
@@ -42,8 +42,8 @@ const useFetch = (urls) => {
         setGlobal(data[1]);
         setDataHistorical(data[2]);
         setDataVaccine(data[3]);
-
         setDataHistAll([data[4]]);
+        setDataNews(data[5]);
         setLoading(false);
       } catch (error) {
         console.log(`Failed to fetch data: ${error.message}`, error);
@@ -59,8 +59,8 @@ const useFetch = (urls) => {
     global,
     dataHistorical,
     dataVaccine,
-
     dataHistAll,
+    dataNews,
     loading,
     error,
   };
